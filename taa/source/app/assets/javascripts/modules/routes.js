@@ -1,5 +1,5 @@
 (function(angular) {
-  var module = angular.module('stalchild');
+  var module = angular.module('plague_inc');
 
   module.config(['kantoProvider', function(provider) {
     provider.defaultConfig = {
@@ -11,7 +11,11 @@
     }
 
     provider.configs = [{
-      routes: []
+      routes: ['/'],
+      config: {
+        controller: 'Home.Controller',
+        controllerAs: 'hc'
+      }
     }];
     provider.$get().bindRoutes();
   }]);
