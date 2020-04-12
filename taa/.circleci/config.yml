@@ -1,0 +1,47 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: darthjee/circleci_stalchild-base:0.0.1
+        environment:
+          DR_MARIO_MYSQL_HOST: mysql
+          DR_MARIO_MYSQL_PORT: 3306
+          DR_MARIO_MYSQL_USER: stalchild
+          DR_MARIO_MYSQL_NAME: stalchild
+          DR_MARIO_MYSQL_PASSWORD: stalchild
+          DR_MARIO_PASSWORD_SALT: abcd
+      - image: circleci/mysql:5.7
+        name: mysql
+        environment:
+          MYSQL_DATABASE: stalchild_test
+          MYSQL_USER: stalchild
+          MYSQL_PASSWORD: stalchild
+    steps:
+      - checkout
+      - run:
+          name: Set folder
+          command: cp source/* source/.??* ./ -r; rm source -rf
+      - run:
+          name: Prepare Coverage Test Report
+          command: cc-test-reporter before-build
+      - run:
+          name: Bundle Install
+          command: bundle install
+      - run:
+          name: Bower Install
+          command: bundle exec rake bower:install
+      - run:
+          name: Rubocop
+          command: rubocop
+      - run:
+          name: Wait for database
+          command: scripts/wait_for_db.sh
+      - run:
+          name: Migrate
+          command: RAILS_ENV=test bundle exec rake db:schema:load
+      - run:
+          name: RSpec
+          command: bundle exec rspec
+      - run:
+          name: Coverage Test Report
+          command: cc-test-reporter after-build --exit-code $?
