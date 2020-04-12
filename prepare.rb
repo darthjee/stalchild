@@ -10,6 +10,7 @@ def prepare(type, project_name)
   system("sed -e 's/stalchild/#{project_name}/g' -i $(find #{type} -type f)")
   system("sed -e 's/STALCHILD/#{project_name.upcase}/g' -i $(find #{type} -type f)")
   system("sed -e 's/Stalchild/#{project_name.camel}/g' -i $(find #{type} -type f)")
+  system("rename s/plague_inc/#{project_name}/ $(find #{type} -iname '*stalchild*')")
 end
 
 begin
