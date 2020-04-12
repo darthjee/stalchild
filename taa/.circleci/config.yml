@@ -4,12 +4,12 @@ jobs:
     docker:
       - image: darthjee/circleci_stalchild-base:0.0.1
         environment:
-          DR_MARIO_MYSQL_HOST: mysql
-          DR_MARIO_MYSQL_PORT: 3306
-          DR_MARIO_MYSQL_USER: stalchild
-          DR_MARIO_MYSQL_NAME: stalchild
-          DR_MARIO_MYSQL_PASSWORD: stalchild
-          DR_MARIO_PASSWORD_SALT: abcd
+          STALCHILD_MYSQL_HOST: mysql
+          STALCHILD_MYSQL_PORT: 3306
+          STALCHILD_MYSQL_USER: stalchild
+          STALCHILD_MYSQL_NAME: stalchild
+          STALCHILD_MYSQL_PASSWORD: stalchild
+          STALCHILD_PASSWORD_SALT: abcd
       - image: circleci/mysql:5.7
         name: mysql
         environment:
