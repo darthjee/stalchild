@@ -6,7 +6,7 @@ require 'stalchild/version'
 
 Gem::Specification.new do |gem|
   gem.name                  = 'stalchild'
-  gem.version               = Sinclair::VERSION
+  gem.version               = Stalchild::VERSION
   gem.authors               = ['DarthJee']
   gem.email                 = ['darthjee@gmail.com']
   gem.homepage              = 'https://github.com/darthjee/stalchild'
