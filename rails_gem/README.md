@@ -22,7 +22,7 @@ Installation
   gem install stalchild
 ```
 
-- Or add Sinclair to your `Gemfile` and `bundle install`:
+- Or add Stalchild to your `Gemfile` and `bundle install`:
 
 ```ruby
   gem 'stalchild'
