@@ -6,11 +6,11 @@ class String
   end
 end
 
-def prepare(type, project_name)
-  system("sed -e 's/stalchild/#{project_name}/g' -i $(find #{type} -type f)")
-  system("sed -e 's/STALCHILD/#{project_name.upcase}/g' -i $(find #{type} -type f)")
-  system("sed -e 's/Stalchild/#{project_name.camel}/g' -i $(find #{type} -type f)")
-  system("rename s/stalchild/#{project_name}/ $(find #{type} -iname '*stalchild*')")
+def prepare(type, project_name, base='stalchild')
+  system("sed -e 's/#{base}/#{project_name}/g' -i $(find #{type} -type f)")
+  system("sed -e 's/#{base.upcase}/#{project_name.upcase}/g' -i $(find #{type} -type f)")
+  system("sed -e 's/#{base.camel}/#{project_name.camel}/g' -i $(find #{type} -type f)")
+  system("rename s/#{base}/#{project_name}/ $(find #{type} -iname '*#{base}*')")
 end
 
 begin
