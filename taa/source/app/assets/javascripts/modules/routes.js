@@ -1,5 +1,5 @@
 (function(angular) {
-  var module = angular.module('plague_inc');
+  var module = angular.module('taa');
 
   module.config(['kantoProvider', function(provider) {
     provider.defaultConfig = {
