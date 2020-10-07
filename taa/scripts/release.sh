@@ -1,13 +1,12 @@
 #!/bin/bash
 
 function isLatestCommit() {
-  VERSION=$(git tag | tail -n 1)
-  DIFF=$(git diff HEAD $VERSION)
+  VERSION=$(git tag | grep $(git describe  --tags))
 
-  if [[ $DIFF ]]; then
-    return 1
-  else
+  if [[ $VERSION ]]; then
     return 0
+  else
+    return 1
   fi
 }
 
@@ -31,7 +30,7 @@ case $ACTION in
     heroku container:login
     ;;
   "build")
-    make PROJECT=production_taa build
+    make PROJECT=production_stalchild build
     ;;
   "build-heroku")
     make build-heroku
