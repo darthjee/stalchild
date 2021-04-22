@@ -8,8 +8,9 @@ end
 
 def prepare(type, project_name, base='stalchild')
   system("sed -i -e 's/#{base}/#{project_name}/g' $(find #{type} -type f)")
-  system("sed -i -e 's/#{base.upcase}/#{project_name.upcase}/g' $(find #{type} -type f)")
+  system("sed -i -e 's/#{base}/#{project_name}/g' $(find #{type}/.circleci -type f)")
   system("sed -i -e 's/#{base.camel}/#{project_name.camel}/g' $(find #{type} -type f)")
+  system("sed -i -e 's/#{base.upcase}/#{project_name.upcase}/g' $(find #{type}/.circleci -type f)")
   system("rename s/#{base}/#{project_name}/ $(find #{type} -iname '*#{base}*')")
 end
 
