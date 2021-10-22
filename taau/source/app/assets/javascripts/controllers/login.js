@@ -1,8 +1,8 @@
 (function(_, angular, $) {
-  var app = angular.module("login/controller", [
-    "cyberhawk/controller",
-    "cyberhawk/notifier",
-    "binded_http"
+  var app = angular.module('login/controller', [
+    'cyberhawk/controller',
+    'cyberhawk/notifier',
+    'binded_http'
   ]);
 
   function Controller(bindedHttp, notifier) {
@@ -28,7 +28,7 @@
   };
 
   fn._request = function() {
-    return this.http.post("/users/login", {
+    return this.http.post('/users/login', {
       login: {
         login: this.login,
         password: this.password
@@ -50,10 +50,10 @@
       status
     });
 
-    if (status === 404) {
-      this.incorrect = true;
+    if (status / 100 == 4) {
+      this.incorrect = true
     } else {
-      this.error = true;
+      this.error = true
     }
   };
 
@@ -65,9 +65,9 @@
     this.ongoing = false;
   };
 
-  app.controller("Login.Controller", [
-    "binded_http",
-    "cyberhawk_notifier",
+  app.controller('Login.Controller', [
+    'binded_http',
+    'cyberhawk_notifier',
     Controller
   ]);
 }(window._, window.angular, window.$));

@@ -126,25 +126,29 @@ describe LoginController do
       end
     end
 
-    describe '#check', :logged do
-      let(:logged_user) { user }
-
+    describe '#check' do
       before do
+        cookies.signed[:session] = session.id if session
+
         get :check, format: :json
       end
 
+      context 'when user is not logged' do
+        let(:session) {}
+
+        it { expect(response).not_to be_successful }
+
+        it { expect(response.status).to eq(404) }
+      end
+
       context 'when user is logged' do
+        let(:session) { create(:session, user: user) }
+
         it { expect(response).to be_successful }
 
         it 'returns user serialized' do
           expect(response.body).to eq(expected_json)
         end
-      end
-
-      context 'when user is not logged', :not_logged do
-        it { expect(response).not_to be_successful }
-
-        it { expect(response.status).to eq(404) }
       end
 
       context 'when user is logged with expired session' do
@@ -157,8 +161,12 @@ describe LoginController do
     end
   end
 
-  describe 'DELETE logoff', :logged do
-    let(:logged_user) { user }
+  describe 'DELETE logoff' do
+    let(:session) { create(:session, user: user) }
+
+    before do
+      controller.send(:cookies).signed[:session] = session.id
+    end
 
     it do
       expect { delete :logoff }
