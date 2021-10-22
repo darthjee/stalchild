@@ -1,8 +1,8 @@
 (function(angular) {
   window.Login = {};
 
-  angular.module("login", [
-    "login/controller"
-  ]);
+  angular.module('login', [
+    'login/controller'
+  ])
 }(window.angular));
 
