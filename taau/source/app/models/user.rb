@@ -2,13 +2,23 @@
 
 class User < ApplicationRecord
   validates_presence_of :name, :login, :email, :encrypted_password
-  has_many :measurements
   has_many :sessions
+  has_many :games
+
+  validates :login,
+            presence: true,
+            length: { maximum: 50 }
+  validates :email,
+            presence: true,
+            length: { maximum: 100 }
+  validates :name,
+            presence: true,
+            length: { maximum: 100 }
 
   def self.login(login:, password:)
     User.find_by!(login: login).verify_password!(password)
   rescue ActiveRecord::RecordNotFound
-    raise Stalchild::Exception::LoginFailed
+    raise Paperboy::Exception::LoginFailed
   end
 
   def password=(pass)
@@ -19,7 +29,7 @@ class User < ApplicationRecord
   def verify_password!(pass)
     return self if encrypted_password == encrypt_password(pass)
 
-    raise Stalchild::Exception::LoginFailed
+    raise Paperboy::Exception::LoginFailed
   end
 
   private
