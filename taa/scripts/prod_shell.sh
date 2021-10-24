@@ -12,7 +12,7 @@ function run_docker() {
 }
 
 function clean_env() {
-  sleep 10
+  sleep 5
   echo "" > .env.production
 }
 
@@ -26,7 +26,6 @@ function get_image() {
     download
   fi
 }
-
 
 function download() {
   docker pull $(docker_url)
