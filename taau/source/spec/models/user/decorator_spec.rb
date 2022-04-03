@@ -56,6 +56,8 @@ describe User::Decorator do
         }.deep_stringify_keys
       end
 
+      before { user.valid? }
+
       it 'include errors' do
         expect(decorator.as_json).to eq(expected_json)
       end
