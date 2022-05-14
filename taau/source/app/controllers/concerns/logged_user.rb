@@ -4,11 +4,13 @@ module LoggedUser
   extend ActiveSupport::Concern
 
   included do
-    rescue_from Stalchild::Exception::LoginFailed, with: :not_found
-    rescue_from Stalchild::Exception::NotLogged,   with: :not_found
+    rescue_from McDoodle::Exception::LoginFailed, with: :not_found
+    rescue_from McDoodle::Exception::NotLogged,   with: :not_found
   end
 
   private
+
+  delegate :logged_user, :logged_session, to: :logged_user_processor
 
   def save_session
     logged_user_processor.login(user)
@@ -18,15 +20,11 @@ module LoggedUser
     logged_user_processor.logoff
   end
 
-  def logged_user
-    @logged_user ||= logged_user_processor.logged_user
-  end
-
   def logged_user_processor
     @logged_user_processor ||= Processor.new(self)
   end
 
   def check_logged!
-    raise Stalchild::Exception::NotLogged unless logged_user
+    raise McDoodle::Exception::NotLogged unless logged_user
   end
 end
