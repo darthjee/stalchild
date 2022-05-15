@@ -15,7 +15,9 @@ ActiveRecord::Schema.define(version: 2020_09_21_210137) do
   create_table "sessions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "expiration"
+    t.string "token", limit: 64, null: false
     t.index ["user_id"], name: "fk_rails_758836b4f0"
+    t.index ["token"], name: "index_sessions_on_token", unique: true
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
