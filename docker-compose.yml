@@ -1,7 +1,8 @@
 version: '3'
 services:
   stalchild:
-    image: ruby:2.7.0
+    image: stalchild
+    build: .
     volumes:
       - ./:/home/stalchild
     working_dir: /home/stalchild
