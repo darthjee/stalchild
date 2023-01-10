@@ -12,17 +12,17 @@ Gem::Specification.new do |gem|
   gem.homepage              = 'https://github.com/darthjee/stalchild'
   gem.description           = ''
   gem.summary               = gem.description
-  gem.required_ruby_version = '>= 2.5.0'
+  gem.required_ruby_version = '>= 2.7.0'
 
   gem.files                 = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   gem.executables           = gem.files.grep(%r{^bin/}) { |f| File.basename(f) }
   gem.test_files            = gem.files.grep(%r{^(test|gem|features)/})
   gem.require_paths         = ['lib']
 
-  gem.add_development_dependency 'bundler',            '2.3.20'
+  gem.add_development_dependency 'bundler',            '2.3.25'
   gem.add_development_dependency 'pry',                '0.14.1'
   gem.add_development_dependency 'pry-nav',            '1.0.0'
-  gem.add_development_dependency 'rake',               '13.0.1'
+  gem.add_development_dependency 'rake',               '13.0.6'
   gem.add_development_dependency 'reek',               '6.0.3'
   gem.add_development_dependency 'rspec',              '3.11.0'
   gem.add_development_dependency 'rspec-core',         '3.11.0'
