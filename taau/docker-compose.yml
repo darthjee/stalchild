@@ -1,14 +1,5 @@
 version: '3'
 services:
-  dev_stalchild_mysql:
-    image: mysql:5.7
-    container_name: dev_stalchild_mysql
-    env_file: .env.dev
-    environment:
-      MYSQL_ROOT_PASSWORD: stalchild
-    ports:
-      - 127.0.0.1:$DEV_STALCHILD_MYSQL_PORT:3306
-
   stalchild_mysql:
     image: mysql:5.7
     container_name: stalchild_mysql
@@ -16,38 +7,25 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: stalchild
     ports:
-      - 127.0.0.1:$LOCAL_STALCHILD_MYSQL_PORT:3306
-    volumes:
-      - ./mysql:/var/lib/mysql
-
-
+      - 127.0.0.1:$STALCHILD_MYSQL_PORT:3306
   #################### Base  ####################
 
   base: &base
-    image: darthjee/dev_stalchild
+    image: darthjee/stalchild
     volumes:
       - ./source:/home/app/app
     links:
-      - dev_stalchild_mysql:mysql
-    env_file: .env.dev
+      - stalchild_mysql:mysql
+    env_file: .env
 
 
   base_build:
     <<: *base
     build:
       context: .
-      dockerfile: Dockerfile.dev_stalchild
+      dockerfile: Dockerfile.stalchild
     command: echo done
 
-  production_base_build:
-    image: darthjee/production_stalchild
-    env_file: .env.dev
-    environment:
-      RAILS_ENV: production
-    build:
-      context: .
-      dockerfile: Dockerfile.production_stalchild
-    command: echo done
   #################### CONTAINERS ####################
 
   stalchild_app:
@@ -79,11 +57,4 @@ services:
   stalchild_production:
     env_file: .env.production
     container_name: stalchild_production
-    image: $PRODUCTION_IMAGE
-
-  stalchild:
-    env_file: .env
-    container_name: stalchild
-    image: darthjee/stalchild
-    links:
-      - stalchild_mysql:mysql
+    image: darthjee/production_stalchild
