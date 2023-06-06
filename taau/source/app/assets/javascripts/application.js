@@ -24,5 +24,4 @@
 //= require modules/stalchild
 //= require_tree ./modules
 //= require rails-ujs
-//= require turbolinks
 //= require_tree .

@@ -40,7 +40,7 @@ jobs:
       - checkout
       - run:
           name: Set folder
-          command: cp source/* source/.??* ./ -r; rm source -rf
+          command: cp source/* source/.??* ./ -r; rm source -rf; rm -rf old_source
       - run:
           name: Prepare Coverage Test Report
           command: cc-test-reporter before-build
@@ -49,19 +49,19 @@ jobs:
           command: bundle install
       - run:
           name: Bower Install
-          command: bundle exec rake bower:install
+          command: rake bower:install
       - run:
           name: Wait for database
           command: scripts/wait_for_db.sh
       - run:
           name: Migrate
-          command: RAILS_ENV=test bundle exec rake db:schema:load
+          command: RAILS_ENV=test rake db:schema:load
       - run:
           name: RSpec
-          command: bundle exec rspec
+          command: rspec
       - run:
           name: Coverage Test Report
-          command: cc-test-reporter after-build --exit-code $?
+          command: cc-test-reporter after-build -t simplecov --exit-code $?
 
   checks:
     docker:
@@ -83,7 +83,7 @@ jobs:
       - checkout
       - run:
           name: Set folder
-          command: cp source/* source/.??* ./ -r; rm source -rf
+          command: cp source/* source/.??* ./ -r; rm source -rf; rm -rf old_source
       - run:
           name: Bundle Install
           command: bundle install
