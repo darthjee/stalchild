@@ -7,10 +7,12 @@ class String
 end
 
 def prepare(type, project_name, base='stalchild')
-  system("sed -i -e 's/#{base}/#{project_name}/g' $(find #{type} -type f)")
-  system("sed -i -e 's/#{base.upcase}/#{project_name.upcase}/g' $(find #{type} -type f)")
-  system("sed -i -e 's/#{base.camel}/#{project_name.camel}/g' $(find #{type} -type f)")
-  system("rename s/#{base}/#{project_name}/ $(find #{type} -iname '*#{base}*')")
+  system("cp -R #{type} #{project_name}")
+
+  system("sed -i -e 's/#{base}/#{project_name}/g' $(find #{project_name} -type f)")
+  system("sed -i -e 's/#{base.upcase}/#{project_name.upcase}/g' $(find #{project_name} -type f)")
+  system("sed -i -e 's/#{base.camel}/#{project_name.camel}/g' $(find #{project_name} -type f)")
+  system("rename s/#{base}/#{project_name}/ $(find #{project_name} -iname '*#{base}*')")
 end
 
 begin
