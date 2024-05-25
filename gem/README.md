@@ -1,5 +1,6 @@
 Stalchild
-====
+=========
+
 [![Code Climate](https://codeclimate.com/github/darthjee/stalchild/badges/gpa.svg)](https://codeclimate.com/github/darthjee/stalchild)
 [![Test Coverage](https://codeclimate.com/github/darthjee/stalchild/badges/coverage.svg)](https://codeclimate.com/github/darthjee/stalchild/coverage)
 [![Issue Count](https://codeclimate.com/github/darthjee/stalchild/badges/issue_count.svg)](https://codeclimate.com/github/darthjee/stalchild)
@@ -8,6 +9,12 @@ Stalchild
 [![Inline docs](http://inch-ci.org/github/darthjee/stalchild.svg?branch=master)](http://inch-ci.org/github/darthjee/stalchild)
 
 ![stalchild](https://raw.githubusercontent.com/darthjee/stalchild/master/stalchild.jpg)
+
+Gem description
+
+Current Release: [0.0.1](https://github.com/darthjee/stalchild/tree/0.0.1)
+
+[Next release](https://github.com/darthjee/stalchild/compare/0.0.1...master)
 
 Yard Documentation
 -------------------
