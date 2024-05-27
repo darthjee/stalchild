@@ -13,9 +13,10 @@
     provider.configs = [{
       routes: ["/"],
       config: {
-        controller: "Home.Controller",
         controllerAs: "hc"
       }
+    }, {
+      routes: ["/admin/users/new", "/admin/users/:id", "/admin/users", "/admin/users/:id/edit"]
     }];
     provider.$get().bindRoutes();
   }]);
