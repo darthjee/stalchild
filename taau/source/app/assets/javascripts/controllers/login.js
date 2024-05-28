@@ -40,7 +40,7 @@
     this.notifier.notify("login-success", user);
     this.password = null;
 
-    $("#login-modal").modal("hide");
+    $("#loginModal").modal("hide");
   };
 
   fn._error = function(_body, status) {
