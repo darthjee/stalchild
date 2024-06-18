@@ -2,7 +2,7 @@
   var module = angular.module('stalchild', [
     'global',
     'cyberhawk',
-    'kanto',
+    'johto',
     'home'
   ]);
 
