@@ -2,9 +2,8 @@
   var module = angular.module('stalchild', [
     'global',
     'cyberhawk',
-    'kanto',
-    'home',
-    'login'
+    'johto',
+    'home'
   ]);
 
   module.config(['$httpProvider', function($httpProvider) {

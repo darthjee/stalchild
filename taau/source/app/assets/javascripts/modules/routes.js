@@ -1,7 +1,7 @@
 (function(angular) {
   var module = angular.module("stalchild");
 
-  module.config(["kantoProvider", function(provider) {
+  module.config(["johtoProvider", function(provider) {
     provider.defaultConfig = {
       controller: "Cyberhawk.Controller",
       controllerAs: "gnc",
