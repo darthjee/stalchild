@@ -58,3 +58,6 @@ services:
     env_file: .env.production
     container_name: stalchild_production
     image: darthjee/production_stalchild
+    build:
+      context: .
+      dockerfile: Dockerfile.production_stalchild
