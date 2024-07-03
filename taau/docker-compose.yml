@@ -61,3 +61,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.production_stalchild
+    command: bin/server.sh
+    ports:
+      - 127.0.0.1:3002:3000
