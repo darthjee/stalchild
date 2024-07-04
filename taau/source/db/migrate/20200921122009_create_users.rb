@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :email,              null: false
       t.string :encrypted_password, null: false
       t.string :salt,               null: false
+      t.boolean :admin,             null: false, default: false
 
       t.timestamps
 

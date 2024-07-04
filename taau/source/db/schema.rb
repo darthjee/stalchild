@@ -33,6 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_22_014647) do
     t.string "email", null: false
     t.string "encrypted_password", null: false
     t.string "salt", null: false
+    t.boolean "admin", null: false, default: false
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
