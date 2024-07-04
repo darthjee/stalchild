@@ -1,5 +1,5 @@
 (function(angular) {
-  var module = angular.module("stalchild");
+  var module = angular.module("sidewinder");
 
   module.config(["johtoProvider", function(provider) {
     provider.defaultConfig = {
@@ -17,6 +17,8 @@
       }
     }, {
       routes: ["/admin/users/new", "/admin/users/:id", "/admin/users", "/admin/users/:id/edit"]
+    }, {
+      routes: ["/forbidden"]
     }];
     provider.$get().bindRoutes();
   }]);
