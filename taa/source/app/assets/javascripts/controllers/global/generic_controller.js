@@ -3,23 +3,12 @@
     "cyberhawk/builder"
   ]);
 
-  var LoginMethods = {
-    login: function() {
-      this.logged = true;
-    },
-    logoff: function() {
-      this.logged = false;
-    }
+  var Methods = {
   }
 
   var options = {
-    callback: function(){
-      _.extend(this, LoginMethods);
-      _.bindAll(this, "login", "logoff");
-
-      this.notifier.register("login-success", this.login);
-      this.notifier.register("logged", this.login);
-      this.notifier.register("logoff-success", this.logoff);
+    callback: function() {
+      _.extend(this, Methods);
     }
   };
 
