@@ -1,7 +1,7 @@
-FROM darthjee/ruby_270:1.2.0
+FROM darthjee/ruby_331:1.0.2
 
 USER root
 
-#RUN apt-get update && apt-get install rename
+RUN apt-get update && apt-get install rename
 
 USER app
