@@ -11,8 +11,6 @@
     this.global_state = global_state;
   }
 
-  var fn = Controller.prototype;
-
   app.controller('Global.HeaderController', [
     'binded_http', 'cyberhawk_notifier',
     'cyberhawk_global_state',
