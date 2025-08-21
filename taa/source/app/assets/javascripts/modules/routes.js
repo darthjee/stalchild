@@ -1,20 +1,20 @@
 (function(angular) {
-  var module = angular.module("stalchild");
+  var module = angular.module('stalchild');
 
-  module.config(["johtoProvider", function(provider) {
+  module.config(['johtoProvider', function(provider) {
     provider.defaultConfig = {
-      controller: "Global.GenericController",
-      controllerAs: "gnc",
-      templateBuilder: function(route, params) {
-        return route + "?ajax=true";
+      controller: 'Global.GenericController',
+      controllerAs: 'gnc',
+      templateBuilder: function(route) {
+        return route + '?ajax=true';
       }
-    }
+    };
 
     provider.configs = [{
-      routes: ["/"],
+      routes: ['/'],
       config: {
-        controller: "Home.Controller",
-        controllerAs: "hc"
+        controller: 'Home.Controller',
+        controllerAs: 'hc'
       }
     }];
     provider.$get().bindRoutes();
