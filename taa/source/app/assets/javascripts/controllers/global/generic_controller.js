@@ -1,10 +1,10 @@
 (function(_, angular) {
-  var app = angular.module("global/generic_controller", [
-    "cyberhawk/builder"
+  var app = angular.module('global/generic_controller', [
+    'cyberhawk/builder'
   ]);
 
   var Methods = {
-  }
+  };
 
   var options = {
     callback: function() {
@@ -13,7 +13,7 @@
   };
 
   app.controller('Global.GenericController', [
-    "cyberhawk_builder", function(builder) {
+    'cyberhawk_builder', function(builder) {
       builder.buildAndRequest(this, options);
 
     }
